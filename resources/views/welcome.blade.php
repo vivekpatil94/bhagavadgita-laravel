@@ -16,6 +16,26 @@
         </style>
     </head>
     <body class="antialiased">
+
+        <div>
+            <h1>Bhagavad Gita</h1>
+            
+            <ul>
+              @foreach ($chapters as $chapter)
+            <h2>{{ $chapter['name'] }}</h2>
+            <p>Translation: {{ $chapter['translation'] }}</p>
+            <p>Transliteration: {{ $chapter['transliteration'] }}</p>
+            <p>Meaning (English): {{ $chapter['meaning']['en'] }}</p>
+            <p>Summary (English): {{ $chapter['summary']['en'] }}</p>
+        
+        @foreach ($chapter['verses'] ?? [] as $verse)
+        <p>{{ $verse['text'] ?? '' }}</p>
+        @endforeach
+
+
+            @endforeach
+            </ul>
+        </div>
         <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
             @if (Route::has('login'))
                 <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right">

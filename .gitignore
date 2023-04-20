@@ -27,3 +27,7 @@ Homestead.json
 composer.lock
 /nbproject
 .directory
+
+
+# Next Js Project
+client

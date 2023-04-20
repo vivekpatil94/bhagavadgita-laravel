@@ -17,24 +17,39 @@
     </head>
     <body class="antialiased">
 
-        <div>
-            <h1>Bhagavad Gita</h1>
-            
-            <ul>
-              @foreach ($chapters as $chapter)
-            <h2>{{ $chapter['name'] }}</h2>
-            <p>Translation: {{ $chapter['translation'] }}</p>
-            <p>Transliteration: {{ $chapter['transliteration'] }}</p>
-            <p>Meaning (English): {{ $chapter['meaning']['en'] }}</p>
-            <p>Summary (English): {{ $chapter['summary']['en'] }}</p>
+      <div class="container">
+            <h1>Chapters</h1>
         
-        @foreach ($chapter['verses'] ?? [] as $verse)
-        <p>{{ $verse['text'] ?? '' }}</p>
-        @endforeach
-
-
-            @endforeach
-            </ul>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Chapter Number</th>
+                        <th>Name</th>
+                        <th>Verses Count</th>
+                        <th>Translation</th>
+                        <th>Transliteration</th>
+                        <th>Meaning (en)</th>
+                        <th>Meaning (hi)</th>
+                        <th>Summary (en)</th>
+                        <th>Summary (hi)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($chapters as $chapter)
+                    <tr>
+                        <td>{{ $chapter->chapter_number }}</td>
+                        <td>{{ $chapter->name }}</td>
+                        <td>{{ $chapter->verses_count }}</td>
+                        <td>{{ $chapter->translation }}</td>
+                        <td>{{ $chapter->transliteration }}</td>
+                        <td>{{ $chapter->meaning_en }}</td>
+                        <td>{{ $chapter->meaning_hi }}</td>
+                        <td>{{ $chapter->summary_en }}</td>
+                        <td>{{ $chapter->summary_hi }}</td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
         <div class="relative sm:flex sm:justify-center sm:items-center min-h-screen bg-dots-darker bg-center bg-gray-100 dark:bg-dots-lighter dark:bg-gray-900 selection:bg-red-500 selection:text-white">
             @if (Route::has('login'))

@@ -35,13 +35,15 @@ use App\Http\Controllers\LoginController;
 //Route::get('/', function () {
 //    return view('welcome');
 //});
+
+ Route::get('/',[HomeController::class, 'index']);  
 Route::group(['middleware' => ['web']], function () {
 
     Route::resource('login',LoginController::class);
         
-    Route::group(['middleware' => ['Adminx']], function () {
-			
-        Route::get('/',[HomeController::class, 'index']);        
+   // Route::group(['middleware' => ['Adminx']], function () {
+    Route::group(['middleware' => ['Adminx'], 'prefix' => 'admin'], function () {
+         Route::get('/',[AdminsController::class, 'index']);          
         Route::get('nextPage',[HomeController::class, 'nextpage']);
         Route::post('nextPage',[HomeController::class, 'nextpage']);
         Route::get('dashboard/{id?}',[DashboardController::class, 'sample']);

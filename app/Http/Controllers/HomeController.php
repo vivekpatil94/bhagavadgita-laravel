@@ -15,9 +15,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
 		
-        $data = array();
-        
-        return view('home.index' ,$data);
+        return view('welcome');
     }
     
     public function nextpage(Request $request)
